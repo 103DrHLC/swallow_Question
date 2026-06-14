@@ -315,6 +315,69 @@ body {
   color: var(--text-soft);
 }
 
+/* ---------- Info notice / 證據提醒 ---------- */
+.notice {
+  background: #eef6fb;
+  border: 1px solid #bcdcee;
+  border-left: 4px solid var(--primary);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: .9rem;
+  color: #234b5e;
+  margin-bottom: 18px;
+}
+.notice strong { color: var(--primary-dark); }
+
+.field-tip { font-size: .85rem; color: var(--text-soft); margin: 4px 2px 0; }
+
+/* 肌肉評估：標題英文、來源註記 */
+.q-en { font-weight: 400; font-size: .82rem; color: var(--text-soft); }
+.src-note { margin: 8px 0 0; font-size: .8rem; color: var(--text-soft); }
+
+/* 結果：整體判讀框 */
+.overall { border-radius: 10px; padding: 14px 16px; margin: 0 0 18px; font-size: .95rem; }
+.overall.positive { background: var(--danger-bg); color: #7a2e2e; border: 1px solid #f0c0c0; }
+.overall.negative { background: var(--safe-bg); color: #1f6b41; border: 1px solid #bfe3cd; }
+.overall.neutral { background: var(--primary-light); color: var(--primary-dark); border: 1px solid #bfe3e3; }
+
+/* 結果：各肌肉列 */
+.muscle-row {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: #fafcfc;
+}
+.muscle-row.low { border-left-color: var(--danger); }
+.muscle-row.normal { border-left-color: var(--safe); }
+.muscle-row.reference { border-left-color: var(--primary); }
+.muscle-row.skipped { opacity: .55; }
+.muscle-row-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.muscle-name { font-weight: 600; }
+.muscle-row-detail { margin-top: 4px; font-size: .88rem; color: var(--text-soft); }
+
+.badge.neutral { background: var(--primary-light); color: var(--primary-dark); }
+.badge.skip { background: #ececec; color: #888; }
+
+/* 測量方式（可折疊） */
+.method {
+  margin-top: 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2px 16px;
+}
+.method summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 12px 0;
+  color: var(--primary-dark);
+}
+.method-body { font-size: .88rem; color: var(--text-soft); padding-bottom: 8px; }
+.method-body ul { margin: 6px 0; padding-left: 20px; }
+.method-body li { margin: 5px 0; }
+
 /* ---------- Print ---------- */
 @media print {
   body { background: #fff; }
