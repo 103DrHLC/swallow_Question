@@ -47,7 +47,7 @@ function showResult(maxGrip, left, right, cutoff) {
   if (low) {
     badge.textContent = "握力偏低";
     verdict.innerHTML = `您的最大握力低於 ${cutoff} 公斤的參考切點，顯示<strong>握力偏低（肌肉力量不足）</strong>。` +
-      "握力偏低是肌少症的重要指標之一，建議諮詢醫師或物理治療師進一步評估，並加強阻力訓練與蛋白質攝取。";
+      "握力偏低是肌少症的重要指標之一，建議諮詢醫師或治療師進一步評估，並加強阻力訓練與蛋白質攝取。";
   } else {
     badge.textContent = "握力正常";
     verdict.innerHTML = `您的最大握力達到 ${cutoff} 公斤的參考標準，握力屬正常範圍。` +
