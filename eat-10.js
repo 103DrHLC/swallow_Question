@@ -90,7 +90,7 @@ function showResult(total) {
   if (positive) {
     badge.textContent = "篩檢異常";
     verdict.innerHTML = `總分達到或超過 ${POSITIVE_CUTOFF} 分，顯示您的<strong>吞嚥功能可能異常</strong>。` +
-      "建議諮詢醫師、耳鼻喉科或語言治療師，進行吞嚥功能的進一步評估。";
+      "建議諮詢醫師或語言治療師，進行吞嚥功能的進一步評估。";
   } else {
     badge.textContent = "篩檢正常";
     verdict.innerHTML = `總分低於 ${POSITIVE_CUTOFF} 分，目前吞嚥功能屬正常範圍。` +
