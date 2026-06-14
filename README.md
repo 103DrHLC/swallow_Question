@@ -6,6 +6,7 @@
 2. **EAT-10 吞嚥困難篩檢(中文版)**
 3. **握力測量評估**
 4. **吞嚥肌肉超音波評估**（舌骨上肌群）
+5. **肌少症綜合評估**（整合上述四項，依流程提供運動建議）
 
 ## 功能
 
@@ -52,6 +53,17 @@
 
 頦舌骨肌 CSA 切點為性別特異(年輕族群均值 − 2SD、吞嚥專屬、證據最強);頦舌骨肌厚度切點為一般肌少症篩檢(非吞嚥專屬、非性別特異)。**無經驗證的綜合分數**,故各項目分別判讀。
 
+### 肌少症綜合評估（整合流程）
+
+`assessment.html` 會自動彙整在「同一瀏覽器」完成的各項評估結果(透過 localStorage),依下列流程判讀並給運動建議:
+
+1. **SARC-CalF 陽性(≥11)** 或 **握力偏低**(任一)→ 研判 **possible sarcopenia** → 建議**復健四式**(附 QR code 連至成大防衰弱中心)。
+2. 若為 possible sarcopenia,**且**(EAT-10 異常 **或** 吞嚥肌肉異常,任一)→ 加上建議**口腔吞嚥運動**(圖片)。
+3. 皆正常 → 一般保健建議。
+
+> localStorage 在 GitHub Pages／本機伺服器最穩定;部分瀏覽器以 `file://` 直接開啟時可能不會跨頁保存。
+> 復健四式 QR code(`images/rehab-qr.svg`)已自動產生;口腔吞嚥運動圖片請依 `images/README.md` 說明自行加入。
+
 ## 使用方式
 
 直接以瀏覽器開啟 `index.html` 即可,無需安裝或架設伺服器。
@@ -70,6 +82,10 @@ grip-strength.html  # 握力測量頁面
 grip-strength.js    # 握力判定邏輯
 swallow-muscle.html # 吞嚥肌肉超音波評估頁面
 swallow-muscle.js   # 吞嚥肌肉判定邏輯
+assessment.html # 肌少症綜合評估頁面
+assessment.js   # 整合判讀與運動建議
+store.js        # 共用：各評估結果暫存（localStorage）
+images/         # QR code 與口腔吞嚥運動圖片
 styles.css      # 共用樣式
 ```
 

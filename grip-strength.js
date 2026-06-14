@@ -34,6 +34,7 @@ function showResult(maxGrip, left, right, cutoff) {
   document.getElementById("cutoff-score").textContent = `${cutoff} 公斤`;
 
   const low = maxGrip < cutoff;
+  saveAssessment(ASSESS_KEYS.grip, { maxGrip, low, cutoff });
   const circle = document.getElementById("score-circle");
   const badge = document.getElementById("verdict-badge");
   const verdict = document.getElementById("verdict-text");

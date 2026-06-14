@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>肌少症綜合評估</title>
+  <meta name="description" content="整合 SARC-CalF、握力、EAT-10 與吞嚥肌肉評估結果，依臨床流程提供肌少症與口腔吞嚥的運動建議。">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <a class="nav-back" href="index.html">← 返回首頁</a>
+    <header class="hero">
+      <h1>肌少症綜合評估</h1>
+      <p class="hero-sub">Integrated Sarcopenia Assessment</p>
+      <p class="hero-desc">
+        本頁自動彙整您在本裝置完成的各項評估（SARC-CalF、握力、EAT-10、吞嚥肌肉），
+        整合判讀肌少症風險，並依結果提供對應的運動建議。
+      </p>
+    </header>
+
+    <main>
+      <div class="notice">
+        <strong>使用方式：</strong>請先到各別頁面完成評估，本頁會自動讀取並整合結果。
+        資料儲存在「本瀏覽器」；透過 GitHub Pages 或本機伺服器使用時，跨頁保存最穩定
+        （部分瀏覽器以 file:// 直接開啟時可能不會保存）。
+      </div>
+
+      <h2 class="section-title">各項評估狀態</h2>
+      <div id="status-list"></div>
+
+      <h2 class="section-title">綜合判讀</h2>
+      <div id="verdict"></div>
+
+      <h2 class="section-title">運動建議</h2>
+      <div id="recommendations"></div>
+
+      <div class="actions">
+        <button type="button" class="btn btn-primary" id="refresh-btn">重新整理結果</button>
+        <button type="button" class="btn btn-ghost" id="clear-btn">清除所有評估資料</button>
+      </div>
+
+      <p class="disclaimer">
+        ⚠️ 本工具為篩檢／衛教參考，<strong>不能取代專業醫療診斷</strong>。
+        判讀依使用者設定之臨床流程（possible sarcopenia：SARC-CalF 陽性或握力偏低任一）。
+        運動前如有疑慮，請先諮詢醫師、物理治療師或語言治療師。
+      </p>
+    </main>
+
+    <footer class="footer">
+      <p>復健四式：國立成功大學防衰弱中心（掃描 QR code 或點選連結前往）。</p>
+    </footer>
+  </div>
+
+  <script src="store.js"></script>
+  <script src="assessment.js"></script>
+</body>
+</html>

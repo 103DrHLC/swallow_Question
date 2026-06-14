@@ -153,6 +153,7 @@ function showResult(sex) {
   });
 
   document.getElementById("muscle-results").innerHTML = blocks.join("");
+  saveAssessment(ASSESS_KEYS.swallow, { anyLow: lowCount > 0, lowCount, evalCount });
 
   const overall = document.getElementById("overall-text");
   if (evalCount === 0) {

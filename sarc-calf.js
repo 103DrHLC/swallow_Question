@@ -140,6 +140,7 @@ function showResult(total, sarcf, calf) {
   document.getElementById("calf-score").textContent = calf;
 
   const positive = total >= POSITIVE_CUTOFF;
+  saveAssessment(ASSESS_KEYS.sarccalf, { total, positive });
   const circle = document.getElementById("score-circle");
   const badge = document.getElementById("verdict-badge");
   const verdict = document.getElementById("verdict-text");

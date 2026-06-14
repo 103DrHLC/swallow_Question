@@ -77,6 +77,7 @@ function showResult(total) {
   document.getElementById("total-score").textContent = total;
 
   const positive = total >= POSITIVE_CUTOFF;
+  saveAssessment(ASSESS_KEYS.eat10, { total, positive });
   const circle = document.getElementById("score-circle");
   const badge = document.getElementById("verdict-badge");
   const verdict = document.getElementById("verdict-text");
