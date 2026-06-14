@@ -1,4 +1,4 @@
-# 健康篩檢問卷
+# 肌少症與吞嚥困難地圖
 
 一組純前端（HTML / CSS / JavaScript）的線上篩檢問卷,含一個入口網頁,可點選作答並自動計算分數與判讀結果。目前包含:
 
@@ -75,7 +75,7 @@
 ## 檔案結構
 
 ```
-index.html      # 入口網頁(問卷選單)
+index.html      # 封面頁（標題、封面圖、logo）＋ 工具選單
 sarc-calf.html  # SARC-CalF 問卷頁面
 sarc-calf.js    # SARC-CalF 題目與計分邏輯
 eat-10.html     # EAT-10 問卷頁面

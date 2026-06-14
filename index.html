@@ -3,21 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>健康篩檢問卷</title>
-  <meta name="description" content="健康篩檢問卷入口：SARC-CalF 肌少症風險篩檢、EAT-10 吞嚥困難篩檢（中文版）。">
+  <title>肌少症與吞嚥困難地圖</title>
+  <meta name="description" content="肌少症與吞嚥困難地圖：整合 SARC-CalF、握力、EAT-10、吞嚥肌肉評估與運動建議。成大醫院吞嚥咀嚼中心。">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="page">
-    <header class="hero">
-      <h1>健康篩檢問卷</h1>
-      <p class="hero-sub">Health Screening Questionnaires</p>
-      <p class="hero-desc">
-        請選擇您要填寫的篩檢問卷。每份問卷皆可線上點選作答，並自動計算分數與判讀結果。
+    <div class="logo-bar">
+      <img class="logo" src="images/logo-ncku-hospital.png" alt="成大醫院" onerror="this.style.display='none'">
+      <img class="logo" src="images/logo-center.png" alt="吞嚥咀嚼中心" onerror="this.style.display='none'">
+    </div>
+
+    <header class="cover">
+      <img class="cover-img" src="images/cover.jpg" alt="肌少症與吞嚥困難地圖" onerror="this.style.display='none'">
+      <h1 class="cover-title">肌少症與吞嚥困難地圖</h1>
+      <p class="cover-sub">Sarcopenia &amp; Dysphagia Map</p>
+      <p class="cover-desc">
+        整合肌少症與吞嚥困難的篩檢、評估與運動建議。請從下方選擇要使用的工具。
       </p>
     </header>
 
     <main>
+      <h2 class="menu-title">評估工具</h2>
       <nav class="portal-grid" aria-label="問卷選單">
         <a class="portal-card portal-card--feature" href="assessment.html">
           <span class="portal-icon" aria-hidden="true">🧩</span>
@@ -77,7 +84,8 @@
     </main>
 
     <footer class="footer">
-      <p>健康篩檢問卷 ・ 純前端網頁，資料僅於本機計算，不會上傳。</p>
+      <p>國立成功大學醫學院附設醫院 ・ 吞嚥咀嚼中心</p>
+      <p>純前端網頁，資料僅於本機計算，不會上傳。</p>
     </footer>
   </div>
 </body>
