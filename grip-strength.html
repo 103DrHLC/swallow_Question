@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>握力測量評估</title>
+  <meta name="description" content="握力（Handgrip strength）測量評估，依性別判定握力是否偏低，為肌少症重要指標。">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <a class="nav-back" href="index.html">← 返回首頁</a>
+    <header class="hero">
+      <h1>握力測量評估</h1>
+      <p class="hero-sub">Handgrip Strength</p>
+      <p class="hero-desc">
+        握力是肌少症（Sarcopenia）的重要指標之一。請使用握力計（手握式測力器）測量，
+        建議左右手各測量 1–2 次，系統會以較高的數值判定。
+      </p>
+    </header>
+
+    <main>
+      <form id="grip-form" novalidate>
+        <section class="card" id="grip-card">
+          <div class="card-head">
+            <span class="q-index" aria-hidden="true">✊</span>
+            <h2 class="q-title">握力測量結果</h2>
+          </div>
+          <p class="q-hint">
+            系統會依性別自動判定（男性 &lt; 28 公斤 或 女性 &lt; 18 公斤 為握力偏低）。
+            左右手至少需填寫一項，將以較高值判定。
+          </p>
+
+          <div class="field">
+            <label class="field-label">生理性別</label>
+            <div class="options" role="radiogroup" aria-label="生理性別">
+              <label class="option">
+                <input type="radio" name="sex" value="male">
+                <span class="option-box">男性</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="sex" value="female">
+                <span class="option-box">女性</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="left-input">左手握力（公斤）</label>
+            <div class="calf-input-row">
+              <input type="number" id="left-input" name="left" inputmode="decimal"
+                     min="0" max="120" step="0.1" placeholder="例如：26.0">
+              <span class="unit">公斤</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="right-input">右手握力（公斤）</label>
+            <div class="calf-input-row">
+              <input type="number" id="right-input" name="right" inputmode="decimal"
+                     min="0" max="120" step="0.1" placeholder="例如：30.5">
+              <span class="unit">公斤</span>
+            </div>
+            <p class="cutoff-note" id="cutoff-note">請先選擇性別，以套用對應的判定標準。</p>
+          </div>
+        </section>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary" id="calc-btn">判定結果</button>
+          <button type="button" class="btn btn-ghost" id="reset-btn">重新填寫</button>
+        </div>
+      </form>
+
+      <!-- 結果區 -->
+      <section id="result" class="result-card" hidden aria-live="polite">
+        <h2 class="result-title">評估結果</h2>
+
+        <div class="score-display">
+          <div class="score-circle" id="score-circle">
+            <span class="score-number" id="grip-value">0</span>
+            <span class="score-max">公斤（最大）</span>
+          </div>
+          <div class="score-verdict">
+            <span class="badge" id="verdict-badge">—</span>
+            <p class="verdict-text" id="verdict-text"></p>
+          </div>
+        </div>
+
+        <div class="breakdown">
+          <div class="breakdown-item">
+            <span class="breakdown-label">左手</span>
+            <span class="breakdown-value" id="left-score">—</span>
+          </div>
+          <div class="breakdown-item">
+            <span class="breakdown-label">右手</span>
+            <span class="breakdown-value" id="right-score">—</span>
+          </div>
+          <div class="breakdown-item">
+            <span class="breakdown-label">參考切點</span>
+            <span class="breakdown-value" id="cutoff-score">—</span>
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button type="button" class="btn btn-ghost" id="print-btn">列印 / 儲存 PDF</button>
+          <button type="button" class="btn btn-ghost" id="redo-btn">重新填寫</button>
+        </div>
+      </section>
+
+      <p class="disclaimer">
+        ⚠️ 本工具僅為健康評估參考，<strong>不能取代專業醫療診斷</strong>。
+        握力偏低或有任何健康疑慮時，請諮詢醫師、物理治療師或相關醫療專業人員。
+      </p>
+    </main>
+
+    <footer class="footer">
+      <p>握力切點參考亞洲肌少症工作小組（AWGS 2019）：男性 &lt; 28 公斤、女性 &lt; 18 公斤。</p>
+    </footer>
+  </div>
+
+  <script src="grip-strength.js"></script>
+</body>
+</html>
