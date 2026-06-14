@@ -120,7 +120,7 @@ function renderRecommendations(state) {
   // 吞嚥相關：EAT-10 或吞嚥肌肉異常（不論是否肌少症）→ 就醫 + 口腔吞嚥運動
   if (swallowingConcern) {
     const imgs = ORAL_SWALLOW_IMAGES
-      .map((src, i) => `<img src="${src}" alt="口腔吞嚥運動 ${i + 1}" loading="lazy" onerror="this.style.display='none'">`)
+      .map((src, i) => `<a href="${src}" target="_blank" rel="noopener"><img src="${src}" alt="口腔吞嚥運動 ${i + 1}" loading="lazy" onerror="this.parentElement.style.display='none'"></a>`)
       .join("");
     cards.push(`
       <div class="rec-card alert">
@@ -128,7 +128,7 @@ function renderRecommendations(state) {
         <p><strong>建議就醫進一步檢查：</strong>吞嚥篩檢結果異常，建議至醫院耳鼻喉科或復健科／語言治療評估（必要時安排吞嚥攝影 VFSS 等檢查）。</p>
         <p><strong>口腔吞嚥運動：</strong>可同時進行口腔與吞嚥肌肉訓練，依下列圖示練習：</p>
         <div class="exercise-imgs">${imgs}</div>
-        <p class="src-note">口腔吞嚥運動衛教圖示。</p>
+        <p class="src-note">口腔吞嚥運動衛教圖示（點圖可開新分頁放大檢視）。</p>
       </div>`);
   }
 

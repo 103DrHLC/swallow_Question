@@ -442,10 +442,16 @@ body {
 .rec-qr img { width: 150px; height: 150px; border: 1px solid var(--border); border-radius: 8px; background: #fff; }
 .rec-link { display: inline-block; margin-top: 6px; color: var(--primary-dark); font-weight: 600; word-break: break-all; }
 .exercise-imgs {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px; margin-top: 12px;
+  position: relative; left: 50%; transform: translateX(-50%);
+  width: min(92vw, 820px);
+  margin: 16px 0 4px; text-align: center;
 }
-.exercise-imgs img { width: 100%; border: 1px solid var(--border); border-radius: 8px; }
+.exercise-imgs a { display: block; margin-bottom: 12px; }
+.exercise-imgs a:last-child { margin-bottom: 0; }
+.exercise-imgs img {
+  width: 100%; height: auto; display: block;
+  border: 1px solid var(--border); border-radius: 8px;
+}
 
 /* ---------- Print ---------- */
 @media print {
@@ -455,4 +461,5 @@ body {
   .actions, .result-actions, .nav-back, .notice { display: none; }
   .scale-option input:checked + .scale-box { background: #000 !important; }
   .card, .result-card, .rec-card, .status-row, .muscle-row { box-shadow: none; break-inside: avoid; }
+  .exercise-imgs { position: static; left: auto; transform: none; width: 100%; }
 }
