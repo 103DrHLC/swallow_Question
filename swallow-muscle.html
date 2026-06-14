@@ -24,7 +24,7 @@
       <div class="notice">
         <strong>關於證據等級：</strong>與 SARC-F、EAT-10 等成熟量表不同，這三條肌肉的超音波切點目前<strong>尚無國際共識</strong>
         （SARCUS 肌少症超音波共識並未納入此肌群、亦未設定切點）。下列切點多來自<strong>個別單一研究</strong>（主要為日本肌少症吞嚥障礙文獻），
-        本工具以<strong>頦舌骨肌橫斷面積（CSA，性別特異）</strong>作為主要判讀依據（證據最充分）；<strong>二腹肌前腹與下頜舌骨肌改以厚度測量（較快速），但成人尚無已驗證的厚度切點，僅供記錄與追蹤</strong>。
+        每條肌肉皆可填<strong>厚度與／或 CSA</strong>，系統對「有切點者」給判讀、「無切點者」列為參考值。可用切點：頦舌骨肌 CSA（女 &lt; 172.5／男 &lt; 194.7 mm²，性別特異，證據最強）、頦舌骨肌厚度（&lt; 6.5 mm，一般肌少症）、二腹肌前腹 CSA（&lt; 75.1 mm²）；<strong>二腹肌厚度、下頜舌骨肌則無已驗證切點，僅供記錄</strong>。
         本工具僅供研究／教育參考，<strong>不可單獨作為診斷依據</strong>。
       </div>
 
@@ -50,7 +50,7 @@
         <!-- 三條肌肉的輸入卡片（由 swallow-muscle.js 動態產生） -->
         <section id="muscles" class="card-group" aria-label="吞嚥肌肉測量"></section>
 
-        <p class="field-tip">※ 三條肌肉至少需填寫一項；可只填寫已測量的肌肉。</p>
+        <p class="field-tip">※ 每條肌肉可填厚度與／或 CSA，皆選填；整體至少需填寫一項。</p>
 
         <div class="actions">
           <button type="submit" class="btn btn-primary" id="calc-btn">評估結果</button>
@@ -76,8 +76,8 @@
           <ul>
             <li><strong>探頭與姿勢：</strong>線性探頭（約 6–15 MHz），受測者頭頸中立位。</li>
             <li><strong>位置：</strong>下巴下方（submental）正中、橫斷面，約距下頜骨聯合（symphysis）2 公分處。由淺至深依序為：二腹肌前腹（需同時看到左右兩腹）→ 下頜舌骨肌 → 頦舌骨肌。</li>
-            <li><strong>厚度測量（二腹肌前腹、下頜舌骨肌）：</strong>於上述橫斷面影像中，在肌肉上下筋膜之間垂直測量厚度（較快速）。</li>
-            <li><strong>頦舌骨肌橫斷面積（CSA）：</strong>以冠狀面（coronal）測量最常用且再現性佳；於<strong>靜止狀態</strong>測量。</li>
+            <li><strong>厚度測量（各肌肉）：</strong>於上述橫斷面影像中，在肌肉上下筋膜之間垂直測量厚度（較快速）。</li>
+            <li><strong>橫斷面積（CSA）：</strong>沿肌肉邊緣描繪面積；頦舌骨肌以冠狀面（coronal）測量最常用、且為證據最強的切點依據。於<strong>靜止狀態</strong>測量。</li>
             <li><strong>再現性：</strong>二腹肌、頦舌骨肌變異係數約 5%；下頜舌骨肌最難測量（約 8.7%）。</li>
           </ul>
           <p>※ 不同研究的測量平面、儀器與族群不同，數值<strong>不可直接互相比較</strong>；請以一致的測量方式追蹤。</p>
@@ -93,10 +93,11 @@
 
     <footer class="footer">
       <p>
-        參考文獻：Mori T, et al. <em>Eur Geriatr Med</em> 2024（PMID 38587613；頦舌骨肌 CSA 切點，主要判讀依據）；
-        二腹肌前腹厚度參考 <em>Eur Arch Otorhinolaryngol</em> 2023（PMID 37642713；男性 &gt; 女性，無切點）；
-        二腹肌橫斷面積切點見 Ogawa N, et al. <em>Geriatr Gerontol Int</em> 2020（PMID 33227825）。
-        舌骨上肌群超音波證據仍在發展中，尚無共識切點。
+        參考文獻：頦舌骨肌 CSA 切點 Mori T, et al. <em>Eur Geriatr Med</em> 2024（PMID 38587613）；
+        頦舌骨肌厚度切點 6.5 mm（一般肌少症）Barotsis N, et al. 2020；
+        二腹肌前腹 CSA 切點 75.1 mm² Ogawa N, et al. <em>Geriatr Gerontol Int</em> 2020（PMID 33227825）；
+        二腹肌厚度參考 <em>Eur Arch Otorhinolaryngol</em> 2023（PMID 37642713，無切點）。
+        其餘項目尚無已驗證切點；此領域無國際共識切點。
       </p>
     </footer>
   </div>

@@ -357,6 +357,26 @@ body {
 .muscle-name { font-weight: 600; }
 .muscle-row-detail { margin-top: 4px; font-size: .88rem; color: var(--text-soft); }
 
+/* 結果：單一測量列（厚度 / CSA） */
+.measure-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  margin-top: 8px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  font-size: .9rem;
+}
+.measure-line.low { border-left-color: var(--danger); }
+.measure-line.normal { border-left-color: var(--safe); }
+.measure-line.reference { border-left-color: var(--primary); }
+.measure-line > span { color: var(--text-soft); }
+.measure-line .badge { flex: none; }
+
 .badge.neutral { background: var(--primary-light); color: var(--primary-dark); }
 .badge.skip { background: #ececec; color: #888; }
 
