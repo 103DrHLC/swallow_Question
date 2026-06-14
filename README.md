@@ -57,12 +57,14 @@
 
 `assessment.html` 會自動彙整在「同一瀏覽器」完成的各項評估結果(透過 localStorage),依下列流程判讀並給運動建議:
 
-1. **SARC-CalF 陽性(≥11)** 或 **握力偏低**(任一)→ 研判 **possible sarcopenia** → 建議**復健四式**(附 QR code 連至成大防衰弱中心)。
-2. 若為 possible sarcopenia,**且**(EAT-10 異常 **或** 吞嚥肌肉異常,任一)→ 加上建議**口腔吞嚥運動**(圖片)。
+1. **SARC-CalF 陽性(≥11)** 或 **握力偏低**(任一)→ 研判 **possible sarcopenia** → 建議**復健四式**(附 QR code 連至成大防衰弱中心),並就醫評估。
+2. **EAT-10 異常** 或 **吞嚥肌肉異常**(任一,不論是否肌少症)→ 建議**就醫進一步檢查吞嚥** + **口腔吞嚥運動**(圖片)。
 3. 皆正常 → 一般保健建議。
 
+結果頁可按「**列印 / 儲存 PDF**」輸出綜合結果。
+
 > localStorage 在 GitHub Pages／本機伺服器最穩定;部分瀏覽器以 `file://` 直接開啟時可能不會跨頁保存。
-> 復健四式 QR code(`images/rehab-qr.svg`)已自動產生;口腔吞嚥運動圖片請依 `images/README.md` 說明自行加入。
+> 復健四式 QR code(`images/rehab-qr.svg`)已自動產生;口腔吞嚥運動圖片置於 `images/`(oral-swallow-1.jpg…)。
 
 ## 使用方式
 

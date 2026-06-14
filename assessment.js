@@ -11,9 +11,7 @@ const REHAB_URL = "https://anti-frailty.web2.ncku.edu.tw/p/412-1199-26272.php?La
 // 口腔吞嚥運動圖片：請將檔案放入 images/ 並依下列檔名命名（可自行增減）。
 const ORAL_SWALLOW_IMAGES = [
   "images/oral-swallow-1.jpg",
-  "images/oral-swallow-2.jpg",
-  "images/oral-swallow-3.jpg",
-  "images/oral-swallow-4.jpg",
+  // 若有更多圖片，依序加入：images/oral-swallow-2.jpg、...（未放入的會自動隱藏）
 ];
 
 // ---------- 狀態列 ----------
@@ -62,37 +60,52 @@ function renderStatus(sarc, grip, eat, sw) {
 // ---------- 綜合判讀 ----------
 function renderVerdict(state) {
   const { possible, sarcDone, gripDone, eatDone, swDone, swallowingConcern } = state;
-  let html = "";
+  const anyDone = sarcDone || gripDone || eatDone || swDone;
+  if (!anyDone) {
+    document.getElementById("verdict").innerHTML =
+      `<div class="overall neutral">尚未完成任何評估。請先到各別頁面完成評估，本頁會自動彙整結果。</div>`;
+    return;
+  }
+  const parts = [];
 
-  if (!sarcDone && !gripDone) {
-    html = `<div class="overall neutral">尚未完成 <strong>SARC-CalF</strong> 或 <strong>握力</strong> 評估，無法判定肌少症風險，請至少完成其中一項。</div>`;
-  } else if (possible) {
-    html = `<div class="overall positive">研判<strong>可能為肌少症（Possible Sarcopenia）</strong>：SARC-CalF 或握力其中一項異常。建議執行下方運動建議，並就醫進一步評估（肌肉量、體能表現）。</div>`;
-    if (swallowingConcern) {
-      html += `<div class="overall positive">同時偵測到<strong>吞嚥相關異常</strong>（EAT-10 或吞嚥肌肉），建議加上口腔吞嚥運動。</div>`;
-    } else if (!eatDone && !swDone) {
-      html += `<div class="overall neutral">尚未完成 EAT-10／吞嚥肌肉評估；建議補做以判斷是否需要口腔吞嚥運動。</div>`;
+  // 肌少症（SARC-CalF + 握力）
+  if (sarcDone || gripDone) {
+    if (possible) {
+      parts.push(`<div class="overall positive">研判<strong>可能為肌少症（Possible Sarcopenia）</strong>：SARC-CalF 或握力其中一項異常。建議執行下方<strong>復健四式</strong>，並就醫進一步評估。</div>`);
     } else {
-      html += `<div class="overall negative">吞嚥相關評估目前未見異常。</div>`;
+      let t = "肌少症篩檢<strong>未見異常</strong>（SARC-CalF 與握力皆正常）。";
+      if (!sarcDone || !gripDone) t += "（尚有項目未完成，補做後更完整）";
+      parts.push(`<div class="overall negative">${t}</div>`);
     }
   } else {
-    html = `<div class="overall negative">目前<strong>未達 possible sarcopenia 條件</strong>（SARC-CalF 與握力皆未見異常）。建議維持運動與營養並定期追蹤。</div>`;
-    if (!sarcDone || !gripDone) {
-      html += `<div class="overall neutral">提醒：尚有項目未完成，補做後判讀更完整。</div>`;
-    }
+    parts.push(`<div class="overall neutral">尚未完成 SARC-CalF／握力，無法判定肌少症風險。</div>`);
   }
-  document.getElementById("verdict").innerHTML = html;
+
+  // 吞嚥（EAT-10 + 吞嚥肌肉）
+  if (eatDone || swDone) {
+    if (swallowingConcern) {
+      parts.push(`<div class="overall positive">偵測到<strong>吞嚥相關異常</strong>（EAT-10 或吞嚥肌肉）。建議<strong>就醫進一步檢查吞嚥功能</strong>，並進行下方口腔吞嚥運動。</div>`);
+    } else {
+      parts.push(`<div class="overall negative">吞嚥相關評估<strong>未見異常</strong>。</div>`);
+    }
+  } else {
+    parts.push(`<div class="overall neutral">尚未完成 EAT-10／吞嚥肌肉評估。</div>`);
+  }
+
+  document.getElementById("verdict").innerHTML = parts.join("");
 }
 
 // ---------- 運動建議 ----------
 function renderRecommendations(state) {
-  const { possible, swallowingConcern } = state;
+  const { possible, swallowingConcern, sarcDone, gripDone, eatDone, swDone } = state;
+  const anyDone = sarcDone || gripDone || eatDone || swDone;
   const cards = [];
 
+  // 復健四式：possible sarcopenia
   if (possible) {
     cards.push(`
       <div class="rec-card alert">
-        <h3>① 復健四式（肌力／體能運動）</h3>
+        <h3>復健四式（肌力／體能運動）</h3>
         <p>篩檢結果可能為肌少症，建議規律執行「復健四式」以維持並增進肌力與體能。完整動作請參考國立成功大學防衰弱中心：</p>
         <div class="rec-qr">
           <img src="images/rehab-qr.svg" alt="復健四式網站 QR code" width="150" height="150">
@@ -102,27 +115,35 @@ function renderRecommendations(state) {
           </div>
         </div>
       </div>`);
+  }
 
-    if (swallowingConcern) {
-      const imgs = ORAL_SWALLOW_IMAGES
-        .map((src, i) => `<img src="${src}" alt="口腔吞嚥運動 ${i + 1}" loading="lazy" onerror="this.style.display='none'">`)
-        .join("");
-      cards.push(`
-        <div class="rec-card alert">
-          <h3>② 口腔吞嚥運動</h3>
-          <p>同時有吞嚥相關異常（EAT-10 或吞嚥肌肉），建議加做口腔與吞嚥肌肉訓練，依下列圖示練習：</p>
-          <div class="exercise-imgs">${imgs}</div>
-          <p class="src-note">口腔吞嚥運動衛教圖示（如未顯示，請將圖片放入 <code>images/</code> 資料夾）。</p>
-        </div>`);
-    }
-  } else {
+  // 吞嚥相關：EAT-10 或吞嚥肌肉異常（不論是否肌少症）→ 就醫 + 口腔吞嚥運動
+  if (swallowingConcern) {
+    const imgs = ORAL_SWALLOW_IMAGES
+      .map((src, i) => `<img src="${src}" alt="口腔吞嚥運動 ${i + 1}" loading="lazy" onerror="this.style.display='none'">`)
+      .join("");
+    cards.push(`
+      <div class="rec-card alert">
+        <h3>吞嚥相關建議</h3>
+        <p><strong>建議就醫進一步檢查：</strong>吞嚥篩檢結果異常，建議至醫院耳鼻喉科或復健科／語言治療評估（必要時安排吞嚥攝影 VFSS 等檢查）。</p>
+        <p><strong>口腔吞嚥運動：</strong>可同時進行口腔與吞嚥肌肉訓練，依下列圖示練習：</p>
+        <div class="exercise-imgs">${imgs}</div>
+        <p class="src-note">口腔吞嚥運動衛教圖示。</p>
+      </div>`);
+  }
+
+  // 皆正常
+  if (anyDone && !possible && !swallowingConcern) {
     cards.push(`
       <div class="rec-card">
         <h3>一般保健建議</h3>
-        <p>目前未達肌少症篩檢條件。建議：每週 2–3 次阻力（肌力）運動、攝取足夠蛋白質、維持日常活動量，並定期（如每年）追蹤評估。</p>
+        <p>目前篩檢未見異常。建議：每週 2–3 次阻力（肌力）運動、攝取足夠蛋白質、維持日常活動量，並定期（如每年）追蹤評估。</p>
       </div>`);
   }
-  document.getElementById("recommendations").innerHTML = cards.join("");
+
+  document.getElementById("recommendations").innerHTML =
+    cards.join("") ||
+    `<div class="rec-card"><p>完成評估後，這裡會依結果顯示對應的運動與就醫建議。</p></div>`;
 }
 
 // ---------- 更新 ----------
@@ -147,6 +168,7 @@ function update() {
 document.addEventListener("DOMContentLoaded", () => {
   update();
   document.getElementById("refresh-btn").addEventListener("click", update);
+  document.getElementById("print-btn").addEventListener("click", () => window.print());
   document.getElementById("clear-btn").addEventListener("click", () => {
     if (confirm("確定要清除本裝置上所有評估結果嗎？")) {
       clearAssessments();

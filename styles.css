@@ -431,10 +431,10 @@ body {
 
 /* ---------- Print ---------- */
 @media print {
-  body { background: #fff; }
+  body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .hero { background: none; color: #000; border: 1px solid #ccc; box-shadow: none; }
   .hero-sub { color: #555; }
-  .actions, .result-actions, .disclaimer, .nav-back { display: none; }
-  .scale-option input:checked + .scale-box { background: #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .card, .result-card { box-shadow: none; break-inside: avoid; }
+  .actions, .result-actions, .nav-back, .notice { display: none; }
+  .scale-option input:checked + .scale-box { background: #000 !important; }
+  .card, .result-card, .rec-card, .status-row, .muscle-row { box-shadow: none; break-inside: avoid; }
 }
