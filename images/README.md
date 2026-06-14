@@ -11,8 +11,8 @@
 請放入以下檔案（格式 jpg/png 皆可，沿用此檔名即可）：
 
 - `cover.jpg` — 封面圖
-- `logo-ncku-hospital.png` — 成大醫院 logo
-- `logo-center.png` — 吞嚥咀嚼中心 logo
+- `logo-ncku-hospital.jpg` — 成大醫院 logo
+- `logo-center.jpg` — 吞嚥咀嚼中心 logo
 
 未放入時，首頁會自動隱藏該圖片（不會破圖）。
 
