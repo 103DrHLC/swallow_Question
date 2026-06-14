@@ -5,8 +5,9 @@
 // 切點來源：
 // - 頦舌骨肌 CSA：女 < 172.5 mm²、男 < 194.7 mm²（Mori 2024, Eur Geriatr Med，超音波）
 //   ※ 此為「年輕族群均值 − 2SD」之低肌肉量門檻，非附帶敏感度/特異度的診斷切點。
-// - 二腹肌前腹 肌肉量(CSA)：< 75.1 mm²（Ogawa 2020, Geriatr Gerontol Int；AUC 0.731）
+// - 二腹肌前腹 厚度：無成人已驗證切點（厚度較快；原 75.1 mm² 切點為「橫斷面積」，Ogawa 2020）。
 // - 下頜舌骨肌 厚度：無成人已驗證切點（超音波再現性最低）。
+// 註：依使用者選擇採「混合」——頦舌骨肌用 CSA（保留性別特異切點），其餘改用厚度（僅供記錄）。
 
 const MUSCLES = [
   {
@@ -28,13 +29,13 @@ const MUSCLES = [
   {
     id: "digastric",
     zh: "二腹肌前腹", en: "Anterior belly of digastric",
-    measure: "肌肉量（橫斷面積）", unit: "mm²",
-    placeholder: "例如：80",
+    measure: "厚度", unit: "mm",
+    placeholder: "例如：6.0",
     sexSpecific: false,
-    cutoff: () => 75.1,
-    hint: () => "切點：肌肉量 < 75.1 mm² 為偏低（AUC 0.731、敏感度 0.69、特異度 0.74），與肌少症吞嚥障礙相關。",
-    evidence: "證據中等",
-    source: "Ogawa et al., Geriatr Gerontol Int 2020（超音波）",
+    cutoff: () => null,
+    hint: () => "厚度測量較快速；但二腹肌前腹目前無成人已驗證的厚度切點（已知男性厚度大於女性），數值僅供記錄與追蹤參考。",
+    evidence: "厚度無切點",
+    source: "（厚度無成人切點；原 75.1 mm² 為橫斷面積切點，Ogawa 2020）",
   },
   {
     id: "mylohyoid",
