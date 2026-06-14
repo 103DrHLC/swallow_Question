@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EAT-10 吞嚥困難篩檢問卷（中文版）</title>
+  <meta name="description" content="EAT-10（Eating Assessment Tool-10）吞嚥困難篩檢中文版線上問卷，可點選作答並自動計算分數。">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <a class="nav-back" href="index.html">← 返回首頁</a>
+    <header class="hero">
+      <h1>EAT-10 吞嚥困難篩檢問卷</h1>
+      <p class="hero-sub">Eating Assessment Tool-10（中文版）</p>
+      <p class="hero-desc">
+        以下問題用於評估您吞嚥的狀況。請依您目前的實際感受，為每一題點選 0 到 4 分
+        （<strong>0 = 沒有問題</strong>，<strong>4 = 嚴重問題</strong>）。
+      </p>
+    </header>
+
+    <main>
+      <form id="eat-form" novalidate>
+        <!-- 10 項問題（由 eat-10.js 動態產生） -->
+        <section id="questions" class="card-group" aria-label="EAT-10 問題"></section>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary" id="calc-btn">計算分數</button>
+          <button type="button" class="btn btn-ghost" id="reset-btn">重新填寫</button>
+        </div>
+      </form>
+
+      <!-- 結果區 -->
+      <section id="result" class="result-card" hidden aria-live="polite">
+        <h2 class="result-title">篩檢結果</h2>
+
+        <div class="score-display">
+          <div class="score-circle" id="score-circle">
+            <span class="score-number" id="total-score">0</span>
+            <span class="score-max">/ 40 分</span>
+          </div>
+          <div class="score-verdict">
+            <span class="badge" id="verdict-badge">—</span>
+            <p class="verdict-text" id="verdict-text"></p>
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button type="button" class="btn btn-ghost" id="print-btn">列印 / 儲存 PDF</button>
+          <button type="button" class="btn btn-ghost" id="redo-btn">重新填寫</button>
+        </div>
+      </section>
+
+      <p class="disclaimer">
+        ⚠️ 本問卷僅為風險篩檢工具，<strong>不能取代專業醫療診斷</strong>。
+        若總分偏高或有任何吞嚥不適，請諮詢醫師、耳鼻喉科或語言治療師作進一步評估。
+      </p>
+    </main>
+
+    <footer class="footer">
+      <p>評分標準參考：Belafsky PC, et al. <em>Validity and Reliability of the Eating Assessment Tool (EAT-10).</em>
+         Ann Otol Rhinol Laryngol. 2008；總分 ≥ 3 分視為異常。</p>
+    </footer>
+  </div>
+
+  <script src="eat-10.js"></script>
+</body>
+</html>

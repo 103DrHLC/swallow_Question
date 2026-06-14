@@ -34,6 +34,56 @@ body {
   padding: 24px 16px 48px;
 }
 
+/* ---------- Back link ---------- */
+.nav-back {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--primary-dark);
+  text-decoration: none;
+  font-size: .95rem;
+  font-weight: 600;
+}
+.nav-back:hover { text-decoration: underline; }
+
+/* ---------- Portal (首頁選單) ---------- */
+.portal-grid { display: flex; flex-direction: column; gap: 16px; }
+.portal-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.portal-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow: 0 6px 18px rgba(13, 139, 139, 0.15);
+}
+.portal-icon {
+  flex: none;
+  width: 56px; height: 56px;
+  display: grid; place-items: center;
+  background: var(--primary-light);
+  border-radius: 14px;
+  font-size: 1.8rem;
+}
+.portal-body { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.portal-title { font-size: 1.12rem; font-weight: 700; color: var(--primary-dark); }
+.portal-desc { font-size: .92rem; color: var(--text-soft); }
+.portal-meta { font-size: .82rem; color: var(--text-soft); margin-top: 2px; }
+.portal-go { flex: none; font-weight: 600; color: var(--primary); white-space: nowrap; }
+
+@media (max-width: 520px) {
+  .portal-card { flex-wrap: wrap; }
+  .portal-go { width: 100%; text-align: right; }
+}
+
 /* ---------- Hero ---------- */
 .hero {
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
@@ -209,6 +259,45 @@ body {
 .breakdown-label { display: block; font-size: .85rem; color: var(--text-soft); margin-bottom: 4px; }
 .breakdown-value { font-size: 1.15rem; font-weight: 700; }
 
+/* ---------- EAT-10 量尺 (0–4) ---------- */
+.scale { display: flex; gap: 8px; margin-left: 42px; }
+.scale-option { flex: 1; cursor: pointer; }
+.scale-option input { position: absolute; opacity: 0; pointer-events: none; }
+.scale-box {
+  display: block;
+  text-align: center;
+  padding: 12px 0;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: #fafcfc;
+  font-weight: 700;
+  font-size: 1.05rem;
+  transition: all .15s ease;
+}
+.scale-option:hover .scale-box { border-color: var(--primary); }
+.scale-option input:checked + .scale-box {
+  border-color: var(--selected);
+  background: var(--primary);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px var(--selected);
+}
+.scale-option input:focus-visible + .scale-box {
+  outline: 3px solid rgba(13, 139, 139, .35);
+  outline-offset: 2px;
+}
+.scale-anchors {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0 0 42px;
+  font-size: .8rem;
+  color: var(--text-soft);
+}
+@media (max-width: 480px) {
+  .scale, .scale-anchors { margin-left: 0; }
+  .scale { gap: 6px; }
+  .scale-box { padding: 10px 0; }
+}
+
 /* ---------- Disclaimer & footer ---------- */
 .disclaimer {
   margin-top: 26px;
@@ -231,6 +320,7 @@ body {
   body { background: #fff; }
   .hero { background: none; color: #000; border: 1px solid #ccc; box-shadow: none; }
   .hero-sub { color: #555; }
-  .actions, .result-actions, .disclaimer { display: none; }
+  .actions, .result-actions, .disclaimer, .nav-back { display: none; }
+  .scale-option input:checked + .scale-box { background: #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .card, .result-card { box-shadow: none; break-inside: avoid; }
 }
